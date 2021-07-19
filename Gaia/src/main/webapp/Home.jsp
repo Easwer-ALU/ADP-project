@@ -9,5 +9,10 @@
 </head>
 <body>
 	<p class="titletext">Welcome to new Gaia home page</p>
+	<form action="welcome" method="get">
+		<label>Enter name: </label>
+		<input type="text" name="firstname" />
+		<input type="submit"/>
+	</form>
 </body>
 </html>
