@@ -15,7 +15,15 @@
 		<input type="submit"/>
 	</form>
 	<p>
-	<iframe src="https://climate.nasa.gov/interactives/climate_time_machine" width="900" height="700"></iframe>
+	
 	</p>
+	<button onclick="">View Climate change machine</button>&nbsp; <button>View Ice content</button>
+	
+        <iframe src="https://climate.nasa.gov/interactives/climate_time_machine" width="800" height="600" ></iframe>
+    
+       <iframe src="https://climate.nasa.gov/interactives/global-ice-viewer" width="800" height="600"></iframe>
+   
+    
+</div>
 </body>
 </html>
