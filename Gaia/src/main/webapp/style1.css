@@ -6,6 +6,7 @@
 	background-color: #32CD32;
 	height: 150px;
 	width: window-width;
+	
 }
 #carousel {
     width: 100%;
@@ -19,4 +20,70 @@
 #carousel .slide {
     display:block;
  float:left;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #32CD32;
+}
+
+/* Navbar links */
+#navbar a {
+  float: left;
+  display: block;
+  color: #333;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+body {
+  font-family: Helvetica Neue, Arial, sans-serif;
+  text-align: center;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+h1 {
+  font-weight: 200;
+  font-size: 3em;
+  margin: 0 0 0.1em 0;
+}
+
+h2 {
+  font-weight: 200;
+  font-size: 0.9em;
+  margin: 0 0 50px;
+  color: #999;
+}
+
+a {
+  margin-top: 50px;
+  display: block;
+  color: #3e95cd;
+}
+
+section{
+	width: 80%;
+	
 }
