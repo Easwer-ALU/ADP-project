@@ -14,5 +14,8 @@
 		<input type="text" name="firstname" />
 		<input type="submit"/>
 	</form>
+	<p>
+	<iframe src="https://climate.nasa.gov/interactives/climate_time_machine" width="900" height="700"></iframe>
+	</p>
 </body>
 </html>
