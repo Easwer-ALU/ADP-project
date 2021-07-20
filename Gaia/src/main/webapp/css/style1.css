@@ -1,0 +1,96 @@
+@charset "ISO-8859-1";
+/* The navigation bar */
+
+/* CSS HEX */
+/*green-ryb: #77bc3fff;
+earth-yellow: #dba159ff;
+hunter-green: #415d43ff;
+blue-gray: #6c91c2ff;
+*/
+.navbar {
+  overflow: visible;
+  background-color: #77bc3f;
+  position: fixed; /* Set the navbar to fixed position */
+   top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  height: 100px;
+  margin-right: 8px;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 30px 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  text-decoration: none;
+  font-family: "Helvetica",sans-serif;
+  font-size: 30px;
+  
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #415D43;
+ 
+  align="right";
+}
+
+
+
+/* Main content */
+.main {
+  margin-top: 0px; /* Add a top margin to avoid content overlay */
+  color:  black;
+  font-size: 30px;
+  font-family: "Helvetica",sans-serif;
+  background-color: white;
+}
+
+
+section{
+	width: 80%;
+	
+}
+
+#header{
+	width: 150px;
+
+}
+
+#myVideo {
+	margin-top:100px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  max-height: 100px;
+}
+.fullscreen-bg {
+    position: fixed;
+    top: 0px;
+    right: 8px;
+    bottom: 100px;
+    left: 8px;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+}
+
+.title_banner{
+	font-size: 60px;
+	font-family: "Helvetica",sans-serif;
+	margin-top: 0px;
+	color: white;
+	text-align: left;
+}

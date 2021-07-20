@@ -37,8 +37,6 @@ var myChart = new Chart(ctx, {
         fill: true
       }	
     ]
-  },
- options: {
- 	
- }
-});
+  }
+}
+);
