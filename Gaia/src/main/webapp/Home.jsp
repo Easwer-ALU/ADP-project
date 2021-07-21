@@ -18,7 +18,7 @@
   	<th><img src="pictures/earthwatch.png" alt="logo" width="90px" height="90px" padding-right="50px"/></th>
   		<th>&nbsp;</th>
   	<th><a href="#home">Home</a>
-  	 <a href="#clchange">Climate Change</a>
+  	 <a href="clchange.jsp">Climate Change</a>
   	<a href="#measures">Measures</a>
   	</th>
   	<th><a href="#home" class="nav_right">Login</a></th>
