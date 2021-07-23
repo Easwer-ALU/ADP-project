@@ -36,7 +36,7 @@ blue-gray: #6c91c2ff;
 .navbar a:hover {
   background: #415D43;
  
-  align="right";
+  /* align:"right"; */
 }
 
 
@@ -48,6 +48,9 @@ blue-gray: #6c91c2ff;
   font-size: 30px;
   font-family: "Helvetica",sans-serif;
   background-color: white;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top:200px;
 }
 
 
@@ -73,7 +76,7 @@ section{
     position: fixed;
     top: 0px;
     right: 8px;
-    bottom: 100px;
+    bottom: 50px;
     left: 8px;
     overflow: hidden;
     z-index: -100;
@@ -85,12 +88,32 @@ section{
     left: 0;
     width: auto;
     height: auto;
+    z-index:-100;
+    opacity: 0.8;
+    box-shadow: 0 0 10px 5px #000;
 }
 
 .title_banner{
 	font-size: 60px;
 	font-family: "Helvetica",sans-serif;
-	margin-top: 0px;
 	color: white;
-	text-align: left;
+	text-align: center;
+	padding-left: 20px;
+	padding-top:30px;
+}
+html{
+	scroll-behaviour: smooth;
+}
+
+.log{
+	width: 300px;
+	height: auto;
+	color: black;
+	background-color: blue;
+	margin-top: 200px;
+}
+
+#icon{
+	padding-top:100px;
+	position: fixed;
 }
