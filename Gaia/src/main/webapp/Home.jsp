@@ -27,7 +27,7 @@
   		
   		<th>
   			<a href="Home.jsp">Home</a>
-  	 		<a href="clchange.jsp">Climate Change</a>
+  	 		<a href="clchange.jsp">Climate Change in Data</a>
   			<a href="#measures">Measures</a>
   		</th>
   		

@@ -11,7 +11,10 @@
 
 <link rel="stylesheet" href="css/chartstyle.css">
 <link rel="stylesheet" href="css/style1.css">
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="https://unpkg.com/deck.gl@7.3/dist.min.js"></script>
 
 
 </head>
@@ -32,7 +35,7 @@
   		
   		<th>
   			<a href="Home.jsp">Home</a>
-  	 		<a href="clchange.jsp">Climate Change</a>
+  	 		<a href="clchange.jsp">Climate Change in Data</a>
   			<a href="#measures">Measures</a>
   		</th>
   		
@@ -54,8 +57,44 @@
 <div>
 <canvas id="chart" width="200" height="500" style="padding:100px,100px,100px,100px; margin:30px,30px,30px,30px;"></canvas>
 </div>
-<h3 style="text-align:center;">This is a plot of mean temperatures from 1880 to 2020, showing the increase in global temperatures.</h3>
+<h3 style="text-align:center;">This is a plot of mean temperatures from 1880 to 2020, showing the increase in global temperatures. move cursor over the points to observe individual data.</h3>
+<h2>China, US and India emit the most carbon monoxide worldwide. Down below is a map showing carbon monoside emissions in ppm. </h2>
+<div id="container" style="min-height: 600px; width:100%;padding-right:16px;padding-top:0px;margin-right:40px;border-radius:10px;"></div>
+<div style="padding-top:10px;">
+<button onclick="mapper_IND()" style="padding-top:10px;
+	background-color: #77bc3fff;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;">India</button>
+  <button onclick="mapper_US()" style="padding-top:10px;
+	background-color: #77bc3fff;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;">US</button>
+  <button onclick="mapper_CHN()" style="padding-top:10px;
+	background-color: #77bc3fff;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;">China</button>
 </div>
+<canvas id="average-example" style="padding-top:50px; height:"></canvas>
+</div>
+
 <script>
 
 Charter();
@@ -107,7 +146,50 @@ const myChart = new Chart(ctx, {
 });
 }
 
+const api_url = 'https://api.v2.emissions-api.org'
+    + '/api/v2/carbonmonoxide/average.json'
+    + '?country=DE&begin=2019-02-01&end=2019-03-01'
+window.onload = function () {
+fetch(api_url)
+.then(response => response.json())
+.then(data => {
+    let ctx = document.getElementById('average-example').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            // use start times contained in the requested data as labels
+            labels: data.map(x => x.start.substring(8, 10)),
+            datasets: [{
+                label: 'Germany',
+                backgroundColor: '#93bd20',
+                // use the average values as data
+                data: data.map(x => x.average),
+            }]
+        },
 
+        // add a few sensible configuration options
+        options: {
+            scales: {
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'carbon monoxide [mol/m²]'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'day'
+                    }
+                }]
+            }
+        }
+    });
+})
+}
 		
 		async function getData(){
 			const xs= [];
@@ -123,11 +205,88 @@ const myChart = new Chart(ctx, {
 				xs.push(year);	
 				const temp = cols[1];
 				ys.push(parseFloat(temp)+14);
-				console.log(year,temp);
+				
 			});
 			return {xs,ys};
 			
 		}
+</script>
+ 
+<script>
+function mapper_US(){
+	new deck.DeckGL({
+	    container: 'container',
+	    mapboxApiAccessToken: 'pk.eyJ1IjoiZWFzd2VyIiwiYSI6ImNrcmhteXp1dTBhbXYyd3B2ZHdna2hwMjAifQ.yVBCqyouorHF9sL5jWLbaw',
+	    mapStyle: "mapbox://styles/mapbox/dark-v9",
+	    longitude: -97,
+	    latitude: 40,
+	    zoom: 3,
+	    pitch: 0,
+	    layers: [new deck.HexagonLayer({
+	        extruded: true,
+	        radius: 30000,
+	        data: 'https://api.v2.emissions-api.org/api/v2/carbonmonoxide/geo.json?country=US&begin=2019-05-01&end=2019-05-04',
+	        dataTransform: d => d.features,
+	        elevationScale: 50,
+	        getColorValue: points => points.reduce((sum, point) => sum + point.properties.value, 0) / points.length,
+	        getElevationValue: points => points.reduce((sum, point) => sum + point.properties.value, 0) / points.length,
+	        getPosition: d => d.geometry.coordinates,
+	    }),
+	      
+	    ]
+	});
+	}
+	
+function mapper_CHN(){
+	new deck.DeckGL({
+	    container: 'container',
+	    mapboxApiAccessToken: 'pk.eyJ1IjoiZWFzd2VyIiwiYSI6ImNrcmhteXp1dTBhbXYyd3B2ZHdna2hwMjAifQ.yVBCqyouorHF9sL5jWLbaw',
+	    mapStyle: "mapbox://styles/mapbox/dark-v9",
+	    longitude: 102,
+	    latitude: 36,
+	    zoom: 3,
+	    pitch: 0,
+	    layers: [new deck.HexagonLayer({
+	        extruded: true,
+	        radius: 30000,
+	        data: 'https://api.v2.emissions-api.org/api/v2/carbonmonoxide/geo.json?country=CHN&begin=2019-05-01&end=2019-05-04',
+	        dataTransform: d => d.features,
+	        elevationScale: 50,
+	        getColorValue: points => points.reduce((sum, point) => sum + point.properties.value, 0) / points.length,
+	        getElevationValue: points => points.reduce((sum, point) => sum + point.properties.value, 0) / points.length,
+	        getPosition: d => d.geometry.coordinates,
+	    }),
+	      
+	    ]
+	});
+	}
+</script>
+ 
+<script>
+
+function mapper_IND(){
+new deck.DeckGL({
+    container: 'container',
+    mapboxApiAccessToken: 'pk.eyJ1IjoiZWFzd2VyIiwiYSI6ImNrcmhteXp1dTBhbXYyd3B2ZHdna2hwMjAifQ.yVBCqyouorHF9sL5jWLbaw',
+    mapStyle: "mapbox://styles/mapbox/dark-v9",
+    longitude: 78,
+    latitude: 22,
+    zoom: 3.3,
+    pitch: 0,
+    layers: [new deck.HexagonLayer({
+        extruded: true,
+        radius: 30000,
+        data: 'https://api.v2.emissions-api.org/api/v2/carbonmonoxide/geo.json?country=IND&begin=2019-05-01&end=2019-05-04',
+        dataTransform: d => d.features,
+        elevationScale: 50,
+        getColorValue: points => points.reduce((sum, point) => sum + point.properties.value, 0) / points.length,
+        getElevationValue: points => points.reduce((sum, point) => sum + point.properties.value, 0) / points.length,
+        getPosition: d => d.geometry.coordinates,
+    }),
+      
+    ]
+});
+}
 </script>
 </body>
 </html>
