@@ -32,7 +32,7 @@
   		</th>
   		
   		<th>
-  			<a href="Login.jsp">Login</a>
+  			<a href="Login.jsp" id="logname">Account</a>
   		</th>
   
     </tr>

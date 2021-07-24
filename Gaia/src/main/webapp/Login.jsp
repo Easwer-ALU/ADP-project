@@ -8,6 +8,12 @@
 <link rel="stylesheet" href="css/style1.css">
 </head>
 <body>
+<%
+	if(session.getAttribute("username")!=null){
+		response.sendRedirect("Account.jsp");
+	}
+	
+%>
 <div class="navbar">
   <table>
   	<tr>
@@ -27,20 +33,25 @@
   		</th>
   		
   		<th>
-  			<a href="Login.jsp">Login</a>
+  			<a href="Login.jsp">Account</a>
   		</th>
   
     </tr>
   </table>
 </div>	
 
-<div class="form" style="padding-top:100px;">
- 	<form action="Login">
+<div class="form" style="padding-top:100px; font-size:20px">
+ 	<form action="Login" method="post">
+ 	<div class="center">
  	<label>Username </label>
- 	<input type="text" name="name"><br>
+ 	<input type="text" name="name" required><br><br>
  	<label>Password </label>
- 	<input type="password" name="pass">
- 	<button>Login</button>&nbsp;<button>Sign up</button>
+ 	<input type="password" name="pass" required><br>
+ 	<div style="padding-top:10px;">
+ 	<button style="font-size:16px;">Login</button>&nbsp;<button style="font-size:16px;" onclick="location.href='Signup.jsp';">Sign up</button>
+ 	</div>
+ 	
+ 	</div>
  	</form>
  
  </div>

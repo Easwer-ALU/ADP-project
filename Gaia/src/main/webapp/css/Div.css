@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+.table{
+	display: inline-block;
+}
+.text-container{
+	display: inline-block;
+}
+.text1{
+	display: inline-block;
+}
+.text2{
+	display: inline-block;
+}
+.text3{
+	display: inline-block;
+}
+.text4{
+	display: block;
+}

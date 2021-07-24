@@ -152,3 +152,16 @@ h2{
   margin: 4px 2px;
   cursor: pointer;
 }
+.center{
+	 margin: auto;
+  width: 60%;
+  border: 3px solid #6c91c2ff;
+  padding: 10px;
+  
+}
+.center input {
+  width: 100%;
+  height: 30px;
+  border-color:#6c91c2ff;
+  clear: both;
+}

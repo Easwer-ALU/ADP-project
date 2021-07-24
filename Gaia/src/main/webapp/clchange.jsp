@@ -40,7 +40,7 @@
   		</th>
   		
   		<th>
-  			<a href="Login.jsp">Login</a>
+  			<a href="Login.jsp">Account</a>
   		</th>
   
     </tr>
@@ -60,7 +60,7 @@
 <h3 style="text-align:center;">This is a plot of mean temperatures from 1880 to 2020, showing the increase in global temperatures. move cursor over the points to observe individual data.</h3>
 <h2>China, US and India emit the most carbon monoxide worldwide. Down below is a map showing carbon monoside emissions in ppm. </h2>
 <div id="container" style="min-height: 600px; width:100%;padding-right:16px;padding-top:0px;margin-right:40px;border-radius:10px;"></div>
-<div style="padding-top:10px;">
+<div class="center">
 <button onclick="mapper_IND()" style="padding-top:10px;
 	background-color: #77bc3fff;
   border: none;
