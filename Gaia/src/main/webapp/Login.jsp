@@ -34,14 +34,15 @@
   </table>
 </div>	
 
- 
- 	<form class="log" title="Login">
+<div class="form" style="padding-top:100px;">
+ 	<form action="Login">
  	<label>Username </label>
  	<input type="text" name="name"><br>
  	<label>Password </label>
  	<input type="password" name="pass">
- 	<button action="Login">Login</button>&nbsp;<button action="signup">Sign up</button>
+ 	<button>Login</button>&nbsp;<button>Sign up</button>
  	</form>
  
+ </div>
 </body>
 </html>
