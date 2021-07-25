@@ -31,6 +31,7 @@ public class Cart extends HttpServlet {
 			session.setAttribute("deter", deter);
 			session.setAttribute("bamb", bamb);
 			session.setAttribute("trash", trash);
+		
 			
 		if(straw!=0) {
 			total+= straw * 19.9;

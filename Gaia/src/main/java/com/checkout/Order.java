@@ -41,26 +41,28 @@ public class Order extends HttpServlet {
 		String delivery = request.getParameter("delivery");
 		String pay = request.getParameter("payment");
 
+		HttpSession session = request.getSession();
 		
-		  String straw =request.getParameter("straw"); 
-		  String jute =request.getParameter("jute"); 
-		  String mat  =request.getParameter("mat");
-		  String deter  = request.getParameter("deter");
-		  String bamb = request.getParameter("bamb"); 
-		  String trash = request.getParameter("trash");
-		 
+		  String straw = session.getAttribute("straw").toString();
+			 String jute = (String)session.getAttribute("jute").toString();
+			 String mat  = (String)session.getAttribute("mat").toString();
+			 String deter = (String)session.getAttribute("deter").toString();
+			 String bamb =  (String)session.getAttribute("bamb").toString(); 
+			 String trash =  (String)session.getAttribute("trash").toString();
+			 
+		  
 		  Date date = Calendar.getInstance().getTime();  
 		  DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
 		  String ft = dateFormat.format(date);  
 		
 		  String deli = "INSERT INTO del_detail VALUES(?,?,?,?,?)";
 				
-		HttpSession session = request.getSession();
+		
 		float amount = (Float) session.getAttribute("total");
 		String user = (String) session.getAttribute("username");
 		
 	 	String update = "INSERT INTO order_detail VALUES(?,?,?,?,?)";
-	 	String prod = "0";
+	 	String prod = "";
 		  
 	 	try { Class.forName("com.mysql.cj.jdbc.Driver"); Connection con =
 		  DriverManager.getConnection(url,username,password); 
@@ -85,36 +87,38 @@ public class Order extends HttpServlet {
 		  }
 		  String log = (String)session.getAttribute("log");
 		  
-			System.out.println(straw);
+			String str = "0";
 		  	
-		  if(straw !=null) {
-			 String str = "straw";
-			  System.out.println(prod+str);
+		  if(!straw.equals(str)) {
+			 prod= prod+"Metal Straw "+straw+",";
+			 
 		  }
-		  if(jute!=null) {
-			  prod = prod+ "Jute bag ";
+			
+			  if(!jute.equals(str)) {
+				  prod = prod+ "Jute bag "+jute+",";
+			  	
+			  } 
 			  
-			  System.out.println(prod);
+			  if(!mat.endsWith(str)) {
+			  
+			  prod = prod+ "Hemp Mat "+mat+","; 
 		  }
-		  if(mat!=null) {
-		
-			  prod = prod+ "Hemp Mat ";
-			  System.out.println(prod);
-		  }
-		  if(deter!=null) {
-			  prod = prod+ "Detergent ";
-			  System.out.println(prod);
-			
-		  }
-		  if(bamb!=null) {
-			
-			  prod = prod+ "Bamboo Dish Cloth ";
-			  System.out.println(prod);
-		  }
-		  if(trash!=null) {
-			  prod = prod+ "Trash Bag ";
-			  System.out.println(prod);
-		  }
+			  
+			  if(!deter.equals(str)) { 
+				  
+				  prod = prod+ "Detergent "+deter+","; 
+			 
+			 
+			  } 
+			  if(!bamb.equals(str)) {
+			  	  prod = prod+ "Bamboo Dish Cloth "+bamb+","; 
+			  	
+			  }
+			  if(!trash.equals(str)) {
+				  prod = prod+ "Trash Bag "+trash; 
+				  
+				 }
+			 
 		  
 		  	st1.setString(1, log);
 		  	st1.setInt(2, ord_id);
@@ -129,6 +133,8 @@ public class Order extends HttpServlet {
 		  }catch (SQLException e) { e.printStackTrace(); } catch
 		  (ClassNotFoundException e) { e.printStackTrace(); }
 		 
+	 	response.sendRedirect("Retriever");
 	}
-
+	
+	
 }

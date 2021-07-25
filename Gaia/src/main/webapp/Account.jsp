@@ -1,25 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Account</title>
-<link rel="stylesheet" href="css/style1.css">
-<link rel="stylesheet" href="css/Div	.css">
-</head>
-<body action="Retriever">
-<script type="text/javascript">
-        function redirect(){
-        window.location = "/ContentServlet?action=userContents"
-        }
-</script>
 <%
 	if(session.getAttribute("username")==null){
 		response.sendRedirect("Login.jsp");
 	}
 	
 %>
+<%@ page import="java.sql.*" %>
+<% String url= "jdbc:mysql://localhost:3306/gaia";
+String username = "root";
+String password = "easwer#358"; 
+Class.forName("com.mysql.cj.jdbc.Driver"); %>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Account</title>
+<link href="css/style1.css" rel="stylesheet">
+<link rel="stylesheet" href="css/Div.css">
+</head>
+<body action="Retriever">
+<%
+	Connection con = DriverManager.getConnection(url,username,password);
+	Statement stat = con.createStatement();
+	ResultSet resultset = stat.executeQuery("SELECT * FROM order_detail");
+%>
+<script type="text/javascript">
+        function redirect(){
+        window.location = "/ContentServlet?action=userContents"
+        }
+</script>
+
 <div class="navbar">
   <table>
   	<tr>
@@ -69,7 +80,7 @@
 </div>
 -->
 
-<div style="padding-top:10px;margin-top:110px;" class="center">
+<div style="padding-top:10px;margin-top:110px;margin-right:25%;margin-left:25%;">
 	<table style="border: 5px solid #6c91c2ff; width:100%;">
 		<tr>
 			<th>
@@ -77,16 +88,50 @@
 			</th>
 			<th></th>
 		</tr>
-		<tr><th>Name: ${name}<br></th><th></th></tr>
-		<tr><th>e-mail: ${mail}<br></th><th></th></tr>
-		<tr><th>phone number: ${phno}<br></th><th></th></tr>
-		<tr><th>address: ${add}<br></th>
-		<th style="padding:16px;">
+		<tr>
+			<th style="text-align:left;">Name: ${name}<br></th>
+			<th></th>
+		</tr>
+		
+		<tr>
+			<th style="text-align:left;">e-mail: ${mail}<br></th>
+			<th></th>
+			</tr>
+		<tr>
+			<th style="text-align:left;">phone number: ${phno}<br></th>
+			<th></th>
+		</tr>
+		<tr>
+			<th style="text-align:left;">address: ${add}<br>
+		</th>
+			<th style="padding:16px;">
 				<form action="Logout">
 					<input type="submit" value="Logout">
 				</form>
 			</th>
 		</tr>
+		
+	</table>
+	<table style="border: 5px solid #6c91c2ff; margin-top: 10px;width:100%">
+		<tr>
+			<th><h3>Order Details</h3></th>
+		</tr>
+		<tr>
+			
+			<th style="text-align:left;">Order no</th>
+			<th>Products</th>
+			<th>Order Date</th>
+			<th>Amount</th>
+		</tr>
+		<%while(resultset.next()){ %>
+		<tr>
+			
+			<td><%= resultset.getString("ord_id") %></td>
+			<td><%= resultset.getString("prod_name") %></td>
+			<td><%= resultset.getString("order_date") %></td>
+			<td><%= resultset.getString("amount") %></td>
+		</tr>
+		<%} %>
 		
 	</table>
 </div>

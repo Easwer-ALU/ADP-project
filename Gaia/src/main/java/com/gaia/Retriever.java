@@ -26,6 +26,9 @@ public class Retriever extends HttpServlet {
 	String password = "easwer#358";
 	String sql = "SELECT * FROM user_data WHERE log_id =? ";
 	String sql2 = "Select  log_id FROM login WHERE uname =?";
+	String sql3 = "SELECT * FROM order_detail WHERE log_id=?";
+	String sql4 = "SELECT COUNT(*) FROM order_detail WHERE log_id=?";
+	
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -38,6 +41,7 @@ public class Retriever extends HttpServlet {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				Connection con = DriverManager.getConnection(url,username,password);
 				PreparedStatement st = con.prepareStatement(sql2);
+				
 				st.setString(1,user);
 				ResultSet rs=st.executeQuery();
 				while(rs.next()) {
@@ -46,11 +50,16 @@ public class Retriever extends HttpServlet {
 				}
 				int id =(Integer)session.getAttribute("id");
 				System.out.println(id);
-				
+			
+				PreparedStatement stat = con.prepareStatement(sql3);
+			
+				stat.setInt(1,id);
+							
+								
 				PreparedStatement st1 = con.prepareStatement(sql);
 				st1.setInt(1, id);
 				ResultSet rs1 = st1.executeQuery();
-				
+			
 				while(rs1.next()) {
 					String name = rs1.getString("name");
 					String phon = rs1.getString("ph_no");
