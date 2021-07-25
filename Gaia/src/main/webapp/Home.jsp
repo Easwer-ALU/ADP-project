@@ -28,11 +28,11 @@
   		<th>
   			<a href="Home.jsp">Home</a>
   	 		<a href="clchange.jsp">Climate Change in Data</a>
-  			<a href="#measures">Measures</a>
+  			<a href="Shop.jsp">Shop</a>
   		</th>
   		
   		<th>
-  			<a href="Login.jsp" id="logname">Account</a>
+  			<a href="Retriever" id="logname">Account</a>
   		</th>
   
     </tr>

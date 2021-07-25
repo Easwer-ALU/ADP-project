@@ -1,0 +1,57 @@
+@charset "ISO-8859-1";
+body {
+  background: #eee;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+/*   outline: 1px solid #ccc; */
+}
+
+/* Still use global css (not utility css) for base typography etc? */
+p {
+  margin-bottom: 0.8em;
+}
+.navbar {
+  overflow: visible;
+  background-color: #77bc3f;
+  position: fixed; /* Set the navbar to fixed position */
+   top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  height: 100px;
+  margin-right: 8px;
+
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 30px 30px;
+  padding-left: 30px;
+  padding-right: 40px;
+  text-decoration: none;
+  font-family: "Helvetica",sans-serif;
+  font-size: 30px;
+  	
+  
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #415D43;
+}
+.check{
+	 color:white; 
+	 background-color:#6c91c2ff;
+	 padding:10px;
+	 margin-top:10px;
+	 border-radius: 3px;
+	 font-size: 16px;
+	 
+  
+}
+.check:hover{
+	background-color:#6B7A99;
+}

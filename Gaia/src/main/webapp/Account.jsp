@@ -35,7 +35,7 @@
   		<th>
   			<a href="Home.jsp">Home</a>
   	 		<a href="clchange.jsp">Climate Change in Data</a>
-  			<a href="#measures">Measures</a>
+  			<a href="Shop.jsp">Shop</a>
   		</th>
   		
   		<th>
@@ -69,22 +69,25 @@
 </div>
 -->
 
-<div style="padding-top:100px">
-	<table style="border: 5px solid #6c91c2ff; ">
+<div style="padding-top:10px;margin-top:110px;" class="center">
+	<table style="border: 5px solid #6c91c2ff; width:100%;">
 		<tr>
 			<th>
-				<h4>Account Details</h4> 
-				Name: ${username}<br>
-				e-mail: 
-				
+				<h3 style="text-align:left;"> Account Details</h3> 
 			</th>
-			
-			<th>
+			<th></th>
+		</tr>
+		<tr><th>Name: ${name}<br></th><th></th></tr>
+		<tr><th>e-mail: ${mail}<br></th><th></th></tr>
+		<tr><th>phone number: ${phno}<br></th><th></th></tr>
+		<tr><th>address: ${add}<br></th>
+		<th style="padding:16px;">
 				<form action="Logout">
 					<input type="submit" value="Logout">
 				</form>
 			</th>
 		</tr>
+		
 	</table>
 </div>
 </body>

@@ -41,7 +41,7 @@ public class Signup extends HttpServlet {
 		String pass = request.getParameter("pass");
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url,username,password);
 			PreparedStatement st = con.prepareStatement(sql);
 			

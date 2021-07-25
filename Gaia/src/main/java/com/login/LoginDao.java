@@ -23,7 +23,7 @@ public class LoginDao extends HttpServlet {
     
     public boolean check(String uname,String pass) throws SQLException {
     	try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(url,username,password);
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1,uname);
