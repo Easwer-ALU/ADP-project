@@ -54,7 +54,7 @@ public class Retriever extends HttpServlet {
 				PreparedStatement stat = con.prepareStatement(sql3);
 			
 				stat.setInt(1,id);
-							
+			
 								
 				PreparedStatement st1 = con.prepareStatement(sql);
 				st1.setInt(1, id);

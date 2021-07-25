@@ -11,7 +11,10 @@
 <% String url= "jdbc:mysql://localhost:3306/gaia";
 String username = "root";
 String password = "easwer#358"; 
-Class.forName("com.mysql.cj.jdbc.Driver"); %>
+String sql = "SELECT * FROM order_detail WHERE log_id = ?";
+Class.forName("com.mysql.cj.jdbc.Driver");
+
+%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -22,9 +25,12 @@ Class.forName("com.mysql.cj.jdbc.Driver"); %>
 <body action="Retriever">
 <%
 	Connection con = DriverManager.getConnection(url,username,password);
-	Statement stat = con.createStatement();
-	ResultSet resultset = stat.executeQuery("SELECT * FROM order_detail");
-%>
+	PreparedStatement stat = con.prepareStatement(sql);
+	String id = (String)session.getAttribute("id").toString();
+	stat.setString(1,id);
+	
+	ResultSet resultset = stat.executeQuery();%>
+
 <script type="text/javascript">
         function redirect(){
         window.location = "/ContentServlet?action=userContents"

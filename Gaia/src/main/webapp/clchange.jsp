@@ -92,9 +92,16 @@
   font-size: 16px;
   margin: 4px 2px;">China</button>
 </div>
-<canvas id="average-example" style="padding-top:50px; height:"></canvas>
-</div>
+<section style="height:;">
+<canvas id="average-example" style="padding-top:50px; height:200px;"></canvas>
+</section>
+<h2>Here is a graph plotting Sea level rise from 1880 to 2014</h2>
 <iframe src="https://datahub.io/core/sea-level-rise/view/0" width="100%" height="475px" ></iframe>
+</div>
+
+
+
+
 <script>
 
 Charter();
