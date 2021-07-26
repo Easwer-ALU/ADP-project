@@ -9,7 +9,7 @@
 
 <title>Climate change</title>
 
-<link rel="stylesheet" href="css/chartstyle.css">
+
 <link rel="stylesheet" href="css/style1.css">
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
@@ -59,7 +59,7 @@
 </div>
 <h3 style="text-align:center;">This is a plot of mean temperatures from 1880 to 2020, showing the increase in global temperatures. move cursor over the points to observe individual data.</h3>
 <h2>China, US and India emit the most carbon monoxide worldwide. Down below is a map showing carbon monoside emissions in ppm. </h2>
-<div id="container" style="min-height: 600px; width:100%;padding-right:16px;padding-top:0px;margin-right:40px;border-radius:10px;"></div>
+<div id="container" style="min-height: 600px; width:100%;padding-right:16px;margin-right:40px;border-radius:10px;"></div>
 <div class="center">
 <button onclick="mapper_IND()" style="padding-top:10px;
 	background-color: #77bc3fff;
@@ -232,7 +232,7 @@ function mapper_US(){
 	    layers: [new deck.HexagonLayer({
 	        extruded: true,
 	        radius: 30000,
-	        data: 'https://api.v2.emissions-api.org/api/v2/carbonmonoxide/geo.json?country=US&begin=2019-05-01&end=2019-05-04',
+	        data: 'https://api.v2.emissions-api.org/api/v2/carbonmonoxide/geo.json?country=US&begin=2019-05-01&end=2020-05-04',
 	        dataTransform: d => d.features,
 	        elevationScale: 50,
 	        getColorValue: points => points.reduce((sum, point) => sum + point.properties.value, 0) / points.length,
@@ -256,7 +256,7 @@ function mapper_CHN(){
 	    layers: [new deck.HexagonLayer({
 	        extruded: true,
 	        radius: 30000,
-	        data: 'https://api.v2.emissions-api.org/api/v2/carbonmonoxide/geo.json?country=CHN&begin=2019-05-01&end=2019-05-04',
+	        data: 'https://api.v2.emissions-api.org/api/v2/carbonmonoxide/geo.json?country=CHN&begin=2019-05-01&end=2020-05-04',
 	        dataTransform: d => d.features,
 	        elevationScale: 50,
 	        getColorValue: points => points.reduce((sum, point) => sum + point.properties.value, 0) / points.length,
@@ -283,7 +283,7 @@ new deck.DeckGL({
     layers: [new deck.HexagonLayer({
         extruded: true,
         radius: 30000,
-        data: 'https://api.v2.emissions-api.org/api/v2/carbonmonoxide/geo.json?country=IND&begin=2019-05-01&end=2019-05-04',
+        data: 'https://api.v2.emissions-api.org/api/v2/carbonmonoxide/geo.json?country=IND&begin=2019-05-01&end=2020-05-04',
         dataTransform: d => d.features,
         elevationScale: 50,
         getColorValue: points => points.reduce((sum, point) => sum + point.properties.value, 0) / points.length,
